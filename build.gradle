@@ -1,21 +1,10 @@
-plugins {
-    id 'com.android.application'
-}
-
-android {
-    namespace 'com.paydepartement.alestihqaqat'
-    compileSdk 35
-
-    defaultConfig {
-        applicationId 'com.paydepartement.alestihqaqat'
-        minSdk 23
-        targetSdk 35
-        versionCode 1
-        versionName '1.0'
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
     }
-}
 
-dependencies {
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'androidx.webkit:webkit:1.12.1'
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.7.3'
+    }
 }
