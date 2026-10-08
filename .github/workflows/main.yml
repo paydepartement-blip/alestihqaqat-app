@@ -22,26 +22,18 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Check project files
-        run: |
-          echo "===== ROOT build.gradle ====="
-          cat build.gradle
-          echo "===== APP build.gradle ====="
-          cat app/build.gradle
-          echo "===== settings.gradle ====="
-          cat settings.gradle
-
-      - name: Clean Gradle cache
-        run: |
-          gradle --stop || true
-          rm -rf ~/.gradle/caches
-          rm -rf ~/.gradle/wrapper
-
       - name: Build APK
         run: gradle --no-daemon --refresh-dependencies assembleDebug
+
+      - name: Check APK
+        run: |
+          echo "===== APK FILE ====="
+          ls -lh app/build/outputs/apk/debug/
+          echo "===================="
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: AlEstihqaqat-APK
           path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
